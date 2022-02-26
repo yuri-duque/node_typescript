@@ -1,41 +1,47 @@
 {
-    "compilerOptions": {
-      "target": "es2019",
-      "moduleResolution": "node",
-      "module": "commonjs",
-      "lib": ["es2019"],
-      "sourceMap": true, // serve para configurar um mapa de tipo após o build, para que em modo debug facilite a visualização dos tipos
-      "outDir": "dist", // diretorio para o build
-      "strict": true, // ter sempre strict mode "o que é isso?"
-      "alwaysStrict": true,
-      "noImplicitAny": true, // quando não definir um tipo não colocar automaticamente que é do tipo any
-      "strictNullChecks": true, // não deixa iniciar por exemplo const como null
-      "strictFunctionTypes": true, // 
-      "noImplicitThis": true, // não assumir que tenha um this na função quando não declarado
-      "resolveJsonModule": true, 
-      "removeComments": true,
-      "noImplicitReturns": true,
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
-      "baseUrl": "./", 
-      "paths": {
-        "@src/*": ["./src/*"], // facilita o import dos modulos usando path alias 
-        "@test/*": ["./test/*"]
-      },
-      "rootDirs": [
-        "./src",
-        "./test"
-      ],
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true
-    },
-    "include": [
-      "./src/**/*.ts",
-      "./test/**/*.ts"
+  "compilerOptions": {
+    "types": ["node", "jest"],
+    "target": "es2019",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "lib": [
+      "es2019"
     ],
-    "exclude": [
-      "./node_modules/*",
-      "dist"
-    ]
-  }
-  
+    "sourceMap": true, // serve para configurar um mapa de tipo após o build, para que em modo debug facilite a visualização dos tipos
+    "outDir": "dist", // diretorio para o build
+    "strict": true, // ter sempre strict mode "o que é isso?"
+    "alwaysStrict": true,
+    "noImplicitAny": true, // quando não definir um tipo não colocar automaticamente que é do tipo any
+    "strictNullChecks": true, // não deixa iniciar por exemplo const como null
+    "strictFunctionTypes": true, // 
+    "noImplicitThis": true, // não assumir que tenha um this na função quando não declarado
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": [
+        "./src/*"
+      ], // facilita o import dos modulos usando path alias 
+      "@test/*": [
+        "./test/*"
+      ]
+    },
+    "rootDirs": [
+      "./src",
+      "./test"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./test/**/*.ts"
+  ],
+  "exclude": [
+    "./node_modules/*",
+    "dist"
+  ]
+}

@@ -60,3 +60,17 @@ comands:
     - yarn add -D supertest
     - yarn add -D @types/supertest
 ------------------------------------------------------------
+
+
+
+
+----------------- adicionando express -------------------------
+description: adiciona ferramenta supertest que será responsavel 
+por subir uma aplicação para facilitar os testes end2end 
+
+comands:
+    - yarn add express
+    - yarn add -D @types/express
+    - yarn add body-parser
+    - yarn add @overnightjs/core
+------------------------------------------------------------
