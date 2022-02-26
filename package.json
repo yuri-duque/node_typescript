@@ -5,6 +5,7 @@
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "eslint": "^8.10.0",
+    "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.5"
   },
   "name": "node_typescript",
@@ -14,6 +15,7 @@
   "scripts": {
     "build": "tsc",
     "start": "yarn build && node dist/Index.js",
+    "start:dev": "ts-node-dev src/Index.ts",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
