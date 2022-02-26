@@ -1,0 +1,17 @@
+----------------- adicionando typeScript -------------------
+yarn add typescript
+yarn add @types/node
+------------------------------------------------------------
+
+
+----------------- adicionando module-alias ----------------- 
+yarn add module-alias
+yarn add @types/module-alia
+------------------------------------------------------------
+
+
+----------------- adicionando eslint -----------------------
+yarn add -D @typescript-eslint/eslint-plugin
+yarn add -D eslint
+yarn add -D @typescript-eslint/parser
+------------------------------------------------------------
