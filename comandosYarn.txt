@@ -4,14 +4,59 @@ yarn add @types/node
 ------------------------------------------------------------
 
 
------------------ adicionando module-alias ----------------- 
-yarn add module-alias
-yarn add @types/module-alia
+
+----------------- adicionando module-alias -----------------
+description: serve para criar um alias para alguns 
+diretorios e não precisar ficar usando '../' para voltar 
+para raiz do projeto
+
+comands:
+    - yarn add module-alias
+    - yarn add @types/module-alia
 ------------------------------------------------------------
 
 
+
 ----------------- adicionando eslint -----------------------
-yarn add -D @typescript-eslint/eslint-plugin
-yarn add -D eslint
-yarn add -D @typescript-eslint/parser
+description: serve para aplicar algumas regras no código 
+para padronizar e garantir as boas praticas na escrita de código
+
+comands:
+    - yarn add -D @typescript-eslint/eslint-plugin
+    - yarn add -D eslint
+    - yarn add -D @typescript-eslint/parser
+------------------------------------------------------------
+
+
+
+----------------- adicionando ts-node-dv -------------------
+description: serve para quando estiver rodando localmente e 
+realizar uma alteração, não precisar rebuildar o projeto 
+para que a alteração seja refletida
+
+comands:
+    - yarn add -D ts-node-dv
+------------------------------------------------------------
+
+
+
+----------------- adicionando jest -------------------------
+description: adiciona ferramenta mais completa para testes 
+
+comands:
+    - yarn add -D jest
+    - yarn add -D ts-jest
+    - yarn add -D @types/jest
+------------------------------------------------------------
+
+
+
+
+----------------- adicionando supertest -------------------------
+description: adiciona ferramenta supertest que será responsavel 
+por subir uma aplicação para facilitar os testes end2end 
+
+comands:
+    - yarn add -D supertest
+    - yarn add -D @types/supertest
 ------------------------------------------------------------
