@@ -3,7 +3,7 @@
  * that don't have NodeJS as a global type
  */
 declare global {
-    var testRequest: import('SuperTest').SuperTest<import('supertest').Test>
+  var testRequest: import('SuperTest').SuperTest<import('supertest').Test>;
 }
 
 export {};

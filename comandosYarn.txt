@@ -52,9 +52,10 @@ comands:
 
 
 
------------------ adicionando supertest -------------------------
-description: adiciona ferramenta supertest que será responsavel 
-por subir uma aplicação para facilitar os testes end2end 
+----------------- adicionando supertest --------------------
+description: adiciona ferramenta supertest que será 
+responsavel por subir uma aplicação para facilitar os testes
+end2end 
 
 comands:
     - yarn add -D supertest
@@ -64,13 +65,22 @@ comands:
 
 
 
------------------ adicionando express -------------------------
-description: adiciona ferramenta supertest que será responsavel 
-por subir uma aplicação para facilitar os testes end2end 
+----------------- adicionando express ----------------------
+description: 
 
 comands:
     - yarn add express
     - yarn add -D @types/express
     - yarn add body-parser
     - yarn add @overnightjs/core
+------------------------------------------------------------
+
+
+
+
+----------------- adicionando prettier -------------------------
+description: 
+
+comands:
+    - yarn add -D prettier
 ------------------------------------------------------------
