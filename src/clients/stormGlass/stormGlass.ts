@@ -1,7 +1,7 @@
 import axios, { AxiosStatic } from 'axios';
-import { ForecastPoint } from '@src/modules/forecastPoint';
-import { StormGlassForecastResponse } from '@src/modules/stormGlassForecastResponse';
-import { StormGlassPoint } from '@src/modules/stormGlassPoint';
+import { ForecastPoint } from '@src/clients/modules/forecastPoint';
+import { StormGlassForecastResponse } from '@src/clients/modules/stormGlassForecastResponse';
+import { StormGlassPoint } from '@src/clients/modules/stormGlassPoint';
 
 export class StormGlass {
   readonly stormGlassAPIParams =
@@ -24,12 +24,12 @@ export class StormGlass {
 
   private normalizeResponse(points: StormGlassForecastResponse): ForecastPoint[] {
     return points.hours.filter(this.isValidPoint.bind(this)).map((point) => ({
+      time: point.time,
+      waveHeight: point.waveHeight[this.stormGlassAPISource],
+      waveDirection: point.waveDirection[this.stormGlassAPISource],
       swellDirection: point.swellDirection[this.stormGlassAPISource],
       swellHeight: point.swellHeight[this.stormGlassAPISource],
       swellPeriod: point.swellPeriod[this.stormGlassAPISource],
-      time: point.time,
-      waveDirection: point.waveDirection[this.stormGlassAPISource],
-      waveHeight: point.waveHeight[this.stormGlassAPISource],
       windDirection: point.windDirection[this.stormGlassAPISource],
       windSpeed: point.windSpeed[this.stormGlassAPISource],
     }));
@@ -38,11 +38,11 @@ export class StormGlass {
   private isValidPoint(point: Partial<StormGlassPoint>): boolean {
     return !!(
       point.time &&
+      point.waveHeight?.[this.stormGlassAPISource] &&
+      point.waveDirection?.[this.stormGlassAPISource] &&
       point.swellDirection?.[this.stormGlassAPISource] &&
       point.swellHeight?.[this.stormGlassAPISource] &&
       point.swellPeriod?.[this.stormGlassAPISource] &&
-      point.waveDirection?.[this.stormGlassAPISource] &&
-      point.waveHeight?.[this.stormGlassAPISource] &&
       point.windDirection?.[this.stormGlassAPISource] &&
       point.windSpeed?.[this.stormGlassAPISource]
     );
