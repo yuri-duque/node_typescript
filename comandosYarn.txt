@@ -78,9 +78,19 @@ comands:
 
 
 
------------------ adicionando prettier -------------------------
+----------------- adicionando prettier --------------------
 description: 
 
 comands:
     - yarn add -D prettier
+------------------------------------------------------------
+
+
+
+
+----------------- adicionando config -----------------------
+description: 
+
+comands:
+    - yarn add dotenv
 ------------------------------------------------------------
