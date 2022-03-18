@@ -1,18 +1,16 @@
-import axios, { AxiosError, AxiosStatic } from 'axios';
+import { Request } from '@src/util/request';
 import { ForecastPoint } from '@src/clients/modules/forecastPoint';
 import { StormGlassForecastResponse } from '@src/clients/modules/stormGlassForecastResponse';
 import { StormGlassPoint } from '@src/clients/modules/stormGlassPoint';
-import { InternalError } from '@src/util/errors/internal-error';
-import config, { IConfig } from 'config';
-
-const stormglassResourceConfig: IConfig = config.get('App.resources.StormGlass');
+import { StormGlassResponseError } from '@src/util/errors/stormGlassResponseError';
+import { ClientRequestError } from '@src/util/errors/clientRequestError';
 
 export class StormGlass {
   readonly stormGlassAPIParams =
     'swellDirection,swellHeight,swellPeriod,waveDirection,waveHeight,windDirection,windSpeed';
   readonly stormGlassAPISource = 'noaa';
 
-  constructor(protected request: AxiosStatic = axios) {}
+  constructor(protected request = new Request()) {}
 
   public async fetchPoints(lat: number, lng: number): Promise<ForecastPoint[]> {
     try {
@@ -27,18 +25,17 @@ export class StormGlass {
           },
         }
       );
+
       return this.normalizeResponse(response.data);
     } catch (err) {
       // This is handling the Axios errors specifically
-      const axiosError = err as AxiosError;
-      if (axiosError instanceof Error && axiosError.response && axiosError.response.status) {
-        throw new StormGlassResponseError(
-          `Error: ${JSON.stringify(axiosError.response.data)} Code: ${axiosError.response.status}`
-        );
+      if (err instanceof Error && Request.isRequestError(err)) {
+        const error = Request.extractErrorData(err);
+        throw new StormGlassResponseError(`Error: ${JSON.stringify(error.data)} Code: ${error.status}`);
       }
 
       // The type is temporary given we will rework it in the upcoming chapters
-      throw new ClientRequestError((err as { message: any }).message);
+      throw new ClientRequestError(JSON.stringify(err));
     }
   }
 
@@ -66,23 +63,5 @@ export class StormGlass {
       point.windDirection?.[this.stormGlassAPISource] &&
       point.windSpeed?.[this.stormGlassAPISource]
     );
-  }
-}
-
-/**
- * This error type is used when something breaks before the request reaches out to the StormGlass API
- * eg: Network error, or request validation error
- */
-export class ClientRequestError extends InternalError {
-  constructor(message: string) {
-    const internalMessage = 'Unexpected error when trying to communicate to StormGlass';
-    super(`${internalMessage}: ${message}`);
-  }
-}
-
-export class StormGlassResponseError extends InternalError {
-  constructor(message: string) {
-    const internalMessage = 'Unexpected error returned by the StormGlass service';
-    super(`${internalMessage}: ${message}`);
   }
 }
